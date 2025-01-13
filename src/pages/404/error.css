@@ -1,0 +1,45 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 50px 50px 50px;
+}
+.error {
+  margin: 0px;
+  font-size: 96px;
+  color: #42b983;
+}
+.text {
+  display: flex;
+  text-align: center;
+  font-size: 18px;
+  padding: 0px 57px 20px 57px;
+  color: #42b983;
+}
+
+.lien {
+  font-size: 14px;
+  color: #2c3e50;
+  text-decoration: none;
+  padding: 10px 20px 10px 20px;
+  border-radius: 8px;
+  border: solid #42b983 2px;
+}
+
+@media (min-width: 920px) {
+  .error {
+    font-size: 270px;
+    font-weight: 700;
+  }
+
+  .text {
+    padding: 0px 30px 20px 30px;
+    font-size: 36px;
+    font-weight: 500;
+  }
+
+  .lien {
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
