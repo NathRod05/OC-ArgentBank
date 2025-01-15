@@ -7,6 +7,7 @@ import {
 import Header from "./components/header/Header";
 import Home from "../src/pages/home/Home";
 import Login from "../src/pages/login/Login";
+import User from "../src/pages/user/User";
 import Error from "../src/pages/404/Error";
 import Footer from "../src/components/footer/Footer";
 
@@ -17,6 +18,7 @@ function RouterArgentBank() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/user" element={<User />} />
         <Route path="/error404" element={<Error />} />
         <Route path="*" element={<Navigate to="/error404" />} />
       </Routes>
