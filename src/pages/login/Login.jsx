@@ -2,7 +2,7 @@ import "./login.css";
 
 function Login() {
   return (
-    <main className="bg-dark">
+    <main className="container-login">
       <section className="sign-in-content">
         <div className="auth-logo">
           <i className="fa fa-user-circle sign-in-icon"></i>
