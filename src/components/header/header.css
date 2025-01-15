@@ -14,10 +14,10 @@
 }
 
 .header-nav-item {
+  color: #2c3e50;
   text-decoration: none;
   margin-right: 0.5rem;
   font-weight: bold;
-  color: #2c3e50;
 }
 
 .header-nav-item i {
