@@ -4,7 +4,7 @@ function Error() {
   return (
     <div className="not-found">
       <h1 className="error">404</h1>
-      <p className="text">Oups! La page que vous demandez nexiste pas.</p>
+      <p className="error-text">Oups! La page que vous demandez nexiste pas.</p>
       <nav>
         <a className="lien" href="/">
           Retourner sur la page d’accueil
