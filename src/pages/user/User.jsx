@@ -2,25 +2,23 @@ import Balance from "../../components/balance-card/BalanceCard";
 import UserName from "../../components/username/UserName";
 import "./user.css";
 
+import mockData from "../../../mock-data.json";
+
 function User() {
   return (
     <main className="container-user">
       <UserName username="Tony" />
-      <Balance
-        title="Argent Bank Checking (x8349)"
-        amount="$2,082.79"
-        description="Available Balance"
-      />
-      <Balance
-        title="Argent Bank Checking (x8349)"
-        amount="$2,082.79"
-        description="Available Balance"
-      />
-      <Balance
-        title="Argent Bank Checking (x8349)"
-        amount="$2,082.79"
-        description="Available Balance"
-      />
+      {mockData.map((balance) => {
+        return (
+          <Balance
+            key={balance.id}
+            id={balance.id}
+            title={balance.title}
+            amount={balance.amount}
+            description={balance.description}
+          />
+        );
+      })}
     </main>
   );
 }
