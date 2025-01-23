@@ -1,8 +1,10 @@
+/* .main {
+  flex: 1;
+} */
 .container-login {
-  /* display: flex;
-  flex: 1; */
   background-color: #12002b;
   padding-top: 3rem;
+  padding-bottom: 20rem;
 }
 
 .sign-in-content {
