@@ -12,6 +12,16 @@ function Header() {
           <i className="fa fa-user-circle"></i>
           Sign In
         </a>
+        <div>
+          <a className="main-nav-item" href="./user">
+            <i className="fa fa-user-circle"></i>
+            Tony
+          </a>
+          <a className="main-nav-item" href="./">
+            <i className="fa fa-sign-out"></i>
+            Sign Out
+          </a>
+        </div>
       </div>
     </header>
   );
