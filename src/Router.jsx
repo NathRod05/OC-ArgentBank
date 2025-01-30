@@ -10,6 +10,7 @@ import Login from "../src/pages/login/Login";
 import User from "../src/pages/user/User";
 import Error from "../src/pages/404/Error";
 import Footer from "../src/components/footer/Footer";
+import ProtectedRoute from "./components/PrivateRoute";
 
 function RouterArgentBank() {
   return (
@@ -18,7 +19,14 @@ function RouterArgentBank() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/user" element={<User />} />
+        <Route
+          path="/user"
+          element={
+            <ProtectedRoute>
+              <User />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/error404" element={<Error />} />
         <Route path="*" element={<Navigate to="/error404" />} />
       </Routes>
