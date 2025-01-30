@@ -3,30 +3,38 @@ import "./login.css";
 import { useState } from "react";
 import { login } from "../../redux/userSlice";
 import { loginReducer } from "../../redux/loginSlice";
-import loginUser from "../../api";
+import { loginUser, fetchUserProfile } from "../../api";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const userInfo = await loginUser({ email: username, password });
-      console.log("User Info:", userInfo);
-      if (userInfo) {
+      const userToken = await loginUser({ email: username, password });
+      if (userToken) {
+        window.localStorage.setItem("token", userToken);
         dispatch(
-          login({
-            ...userInfo,
+          loginReducer({
+            token: userToken,
             loggedIn: true,
           })
         );
-        dispatch(loginReducer({ token: userInfo }));
-        // setUsername("");
-        // setPassword("");
+        const userProfile = await fetchUserProfile(userToken);
+        if (userProfile) {
+          dispatch(
+            login({
+              user: userProfile,
+            })
+          );
+        }
+        navigate("/user");
       }
     } catch (error) {
       console.error("Erreur lors de la connexion :", error.message);
