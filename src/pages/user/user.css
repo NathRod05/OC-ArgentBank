@@ -8,7 +8,6 @@
 }
 
 .modal {
-  display: none;
   position: fixed;
   top: 130px;
   width: 100%;
