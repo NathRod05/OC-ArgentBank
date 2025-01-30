@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import "./username.css";
 
-function UserName({ username }) {
+function UserName({ username, onOpen }) {
   return (
     <div className="container-username">
       <h1>
@@ -9,7 +9,9 @@ function UserName({ username }) {
         <br />
         {username}
       </h1>
-      <button className="edit-button">Edit Name</button>
+      <button className="edit-button" onClick={onOpen}>
+        Edit Name
+      </button>
     </div>
   );
 }
