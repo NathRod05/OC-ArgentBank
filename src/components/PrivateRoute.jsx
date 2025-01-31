@@ -4,17 +4,16 @@ import { useSelector } from "react-redux";
 import { tokenUser } from "../redux/loginSlice";
 
 const ProtectedRoute = ({ children }) => {
-  const token = useSelector(tokenUser); // Adaptez ce chemin selon votre state
+  const token = useSelector(tokenUser);
 
   if (!token) {
-    return <Navigate to="/login" />; // Redirection vers la page de connexion
+    return <Navigate to="/login" />;
   }
-
-  return children; // Rendre les enfants (c'est-à-dire la page utilisateur)
+  return children;
 };
 
 ProtectedRoute.propTypes = {
-  children: PropTypes.node.isRequired, // 'children' est requis et doit être de type node
+  children: PropTypes.node.isRequired,
 };
 
 export default ProtectedRoute;
