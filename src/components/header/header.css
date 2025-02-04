@@ -29,7 +29,6 @@
 }
 
 .main-nav-item {
-  display: none;
   color: #2c3e50;
   font-weight: bold;
   text-decoration: none;
@@ -38,4 +37,16 @@
 
 .main-nav-item:hover {
   text-decoration: underline;
+}
+
+.name {
+  margin-right: 1rem;
+}
+
+.user {
+  margin-right: 0.3rem;
+}
+
+.logout {
+  margin-right: 0.3rem;
 }
