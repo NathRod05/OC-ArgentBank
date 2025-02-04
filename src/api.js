@@ -1,8 +1,8 @@
 async function loginUser(body) {
   const response = await fetch("http://localhost:3001/api/v1/user/login", {
-    method: "post", // correction ici
+    method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body), // conversion au format JSON
+    body: JSON.stringify(body),
   });
   if (response.ok) {
     const loginData = await response.json();
@@ -35,7 +35,7 @@ async function fetchUserProfile(token) {
 async function editUsername(username, token) {
   const body = JSON.stringify({ userName: username });
   const response = await fetch("http://localhost:3001/api/v1/user/profile", {
-    method: "Put",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
