@@ -18,6 +18,7 @@ function UserName({ username, onOpen }) {
 
 UserName.propTypes = {
   username: PropTypes.string,
+  onOpen: PropTypes.func,
 };
 
 export default UserName;
