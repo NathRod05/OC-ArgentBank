@@ -19,7 +19,6 @@ const Login = () => {
     try {
       const userToken = await loginUser({ email: username, password });
       if (userToken) {
-        window.localStorage.setItem("token", userToken);
         dispatch(
           loginReducer({
             token: userToken,
