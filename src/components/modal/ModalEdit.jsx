@@ -1,15 +1,45 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import "./modal-edit.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { userInfo } from "../../redux/userSlice";
+import { tokenUser } from "../../redux/loginSlice";
+import { editUsername, fetchUserProfile } from "../../api";
+import { login } from "../../redux/userSlice";
 
 function ModalEdit({ onClose }) {
   const user = useSelector(userInfo);
-  const [username, setUsername] = useState("");
+  const token = useSelector(tokenUser);
+  const [username, setUsername] = useState(user.userName);
+  const dispatch = useDispatch();
 
+  const handleNewUsername = async (e) => {
+    e.preventDefault();
+    try {
+      if (token) {
+        const newUsername = await editUsername(username, token);
+        console.log("Nom d'utilisateur mis à jour:", newUsername);
+        onClose();
+
+        const userProfile = await fetchUserProfile(token);
+        if (userProfile) {
+          dispatch(
+            login({
+              user: userProfile,
+            })
+          );
+        }
+      }
+    } catch (error) {
+      console.error(
+        "Erreur au changement du nom d'utilisateur:",
+        error.message
+      );
+    }
+  };
   return (
     <div>
-      <form className="container-form">
+      <form className="container-form" onSubmit={handleNewUsername}>
         <div className="edition-logo">
           <i className="fa fa-user-circle sign-in-icon"></i>
           <h1>Edit</h1>
@@ -19,7 +49,7 @@ function ModalEdit({ onClose }) {
           <input
             type="text"
             id="username"
-            value={user.userName}
+            value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
@@ -35,7 +65,7 @@ function ModalEdit({ onClose }) {
           <button className="btn" type="submit">
             Save
           </button>
-          <button className="btn" type="submit" onClick={onClose}>
+          <button className="btn" type="button" onClick={onClose}>
             Cancel
           </button>
         </div>
@@ -43,5 +73,9 @@ function ModalEdit({ onClose }) {
     </div>
   );
 }
+
+ModalEdit.propTypes = {
+  onClose: PropTypes.func,
+};
 
 export default ModalEdit;
