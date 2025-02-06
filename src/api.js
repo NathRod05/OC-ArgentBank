@@ -6,8 +6,7 @@ async function loginUser(body) {
   });
   if (response.ok) {
     const loginData = await response.json();
-    const loginToken = loginData.body.token;
-    return loginToken;
+    return loginData.body.token;
   } else {
     alert("Incorrect user or password. Please try again.");
   }
@@ -24,8 +23,7 @@ async function fetchUserProfile(token) {
 
   if (response.ok) {
     const userDate = await response.json();
-    const userProfile = userDate.body;
-    return userProfile;
+    return userDate.body;
   } else {
     console.error("User unavailable");
     return null;
@@ -44,8 +42,7 @@ async function editUsername(username, token) {
   });
   if (response.ok) {
     const editDate = await response.json();
-    const updateUsername = editDate.body;
-    return updateUsername;
+    return editDate.body;
   } else {
     alert("Enable to change username");
     return null;
