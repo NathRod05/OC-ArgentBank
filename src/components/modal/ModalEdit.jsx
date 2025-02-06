@@ -18,17 +18,17 @@ function ModalEdit({ onClose }) {
     try {
       if (token) {
         const newUsername = await editUsername(username, token);
-        console.log("Nom d'utilisateur mis à jour:", newUsername);
-        onClose();
-
-        const userProfile = await fetchUserProfile(token);
-        if (userProfile) {
-          dispatch(
-            login({
-              user: userProfile,
-            })
-          );
+        if (newUsername) {
+          const userProfile = await fetchUserProfile(token);
+          if (userProfile) {
+            dispatch(
+              login({
+                user: userProfile,
+              })
+            );
+          }
         }
+        onClose();
       }
     } catch (error) {
       console.error(
