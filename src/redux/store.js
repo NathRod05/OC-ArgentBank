@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { persistReducer, persistStore, PERSIST } from "redux-persist";
-import { thunk } from "redux-thunk";
 import storage from "redux-persist/lib/storage";
 import loginReducer from "./loginSlice";
 import userReducer from "./userSlice";
@@ -27,7 +26,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [PERSIST],
       },
-    }).concat(thunk),
+    }),
   devTools: true,
 });
 
